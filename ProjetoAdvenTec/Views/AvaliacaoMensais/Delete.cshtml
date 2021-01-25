@@ -1,0 +1,58 @@
+﻿@model ProjetoAdvenTec.Models.AvaliacaoMensal
+
+@{
+    ViewData["Title"] = "Excluír Avaliação";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3"><i class="fas fa-paste mr-1"></i>Excluír Avaliação </h1>
+
+<h4 class="lead mt-3">Tem certeza que deseja fazer isso?</h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.dataReferencia)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.dataReferencia)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.dataInicio)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.dataInicio)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.diasExpirar)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.diasExpirar)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.encerrado)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.encerrado)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="hidden" id="idUsuarioAcesso" name="idUsuarioAcesso" value="@ViewBag.idUsuario" />
+        <input type="submit" value="Exluir" class="btn btn-danger" /> |
+        <a onclick="voltarPaginaInicialAvaliacao('@Url.Action("RetornarPaginaPrincipal","AvaliacaoMensais")', @ViewBag.idUsuario)">Voltar</a>
+    </form>
+</div>
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProjetoAdvenTec</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://kit.fontawesome.com/d83b21e690.js" crossorigin="anonymous"></script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="~/imagens/fav/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/imagens/fav/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/imagens/fav/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/imagens/fav/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/imagens/fav/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/imagens/fav/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/imagens/fav/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/imagens/fav/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/imagens/fav/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/imagens/fav/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/imagens/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/imagens/fav/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/imagens/fav/favicon-16x16.png">
+    <link rel="manifest" href="~/imagens/fav/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/imagens/fav/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+</head>
+<body style="background-color:#4F4F4F; color: white">
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+        </script>
+    </environment>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/TelaCliente.js" asp-append-version="true"></script>
+    <script src="~/js/TelaUsuario.js" asp-append-version="true"></script>
+    <script src="~/js/TelaAvaliacao.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

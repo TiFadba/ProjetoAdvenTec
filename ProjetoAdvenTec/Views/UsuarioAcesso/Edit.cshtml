@@ -1,0 +1,155 @@
+﻿@model ProjetoAdvenTec.Models.Usuario
+
+@{
+    ViewData["Title"] = "Editar Usuário";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3">Editar Usuário </h1>
+
+<h4 class="lead mt-3"><i class="fas fa-user mr-1"></i>Altere os campos abaixo: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" id="idUsuarioAcesso" name="idUsuarioAcesso" value="@ViewBag.idUsuario" />
+
+            <div class="row">
+                <div class="col-sm-4 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <label asp-for="nome" class="control-label"></label>
+                        <input asp-for="nome" class="form-control" />
+                        <span asp-validation-for="nome" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="nomeLogin" class="control-label"></label>
+                        <input asp-for="nomeLogin" class="form-control" />
+                        <span asp-validation-for="nomeLogin" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="hidden" asp-for="senha" value="padrao123" class="form-control" />
+                        <span asp-validation-for="senha" class="text-danger"></span>
+                    </div>
+
+                    <input type="hidden" asp-for="id" class="mb-0" />
+                </div>
+
+                @if (ViewBag.infoUsuario.concederPermissoes || ViewBag.infoUsuario.administrador)
+                {
+                    <div class="col-sm-4 col-md-6 col-lg-6">
+                        <div class="col-sm-4 col-md-6 col-lg-6">
+
+                            @if (ViewBag.infoUsuario.administrador && ViewBag.infoUsuario.concederPermissoes)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="administrador" /> @Html.DisplayNameFor(model => model.administrador)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.adicionarUsuario || ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="adicionarUsuario" /> @Html.DisplayNameFor(model => model.adicionarUsuario)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.adminUsuarios || ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="adminUsuarios" /> @Html.DisplayNameFor(model => model.adminUsuarios)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.adicionarCliente || ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="adicionarCliente" /> @Html.DisplayNameFor(model => model.adicionarCliente)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.adminClientes || ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="adminClientes" /> @Html.DisplayNameFor(model => model.adminClientes)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.adicionarAvaliacao || ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="adicionarAvaliacao" /> @Html.DisplayNameFor(model => model.adicionarAvaliacao)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.adminAvaliacoes || ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="adminAvaliacoes" /> @Html.DisplayNameFor(model => model.adminAvaliacoes)
+                                    </label>
+                                </div>
+                            }
+
+
+                            @if (ViewBag.infoUsuario.concederPermissoes && ViewBag.infoUsuario.administrador)
+                            {
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="concederPermissoes" /> @Html.DisplayNameFor(model => model.concederPermissoes)
+                                    </label>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a onclick="voltarPaginaInicialUsuario('@Url.Action("RetornarPaginaPrincipal", "UsuarioAcesso")', @ViewBag.idUsuario)">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

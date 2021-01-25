@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ProjetoAdvenTec.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Lista Clientes";
+    Layout = null;
+}
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+
+    #listaPesquisaCliente {
+        color: white;
+    }
+
+    font {
+        color: white;
+    }
+</style>
+
+@if (Model != null)
+{
+    <div id="listaPesquisaCliente" class="mt-3 text-center">
+        <table class="table text-center" style="color:white">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nomeCliente)
+                    </th>
+                    @*<th>
+                             @Html.DisplayNameFor(model => model.cnpj)
+                        </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.categoria)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ultimaAvaliacao)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nomeCliente)
+                        </td>
+                        @*<td>
+
+                                @if (!String.IsNullOrEmpty(item.cnpj))
+                                {
+                                    @Html.DisplayFor(modelItem => item.cnpj)
+                                }
+                                else
+                                {
+                                    <b>Não Informado</b>
+                                }
+
+                            </td>*@
+                        <td>
+                            @Html.DisplayFor(modelItem => item.categoria)
+                        </td>
+                        <td>
+
+                            @if (item.ultimaAvaliacao.ToString("MM/yyyy").Equals("01/0001"))
+                            {
+                                <a>Não Registrado</a>
+                            }
+                            else
+                            {
+                                @item.ultimaAvaliacao.ToString("MM/yyyy")
+                            }
+
+                        </td>
+                        <td>
+
+                            @if (ViewBag.infoUsuario.administrador || ViewBag.infoUsuario.adminClientes)
+                            {
+                                @*<a onclick="editarCliente('@Url.Action("Edit","Clientes")', @item.id, @ViewBag.idUsuario)">Editar</a> <font> | </font>*@
+                                <a onclick="visualizarCliente('@Url.Action("Details","Clientes")', @item.id, @ViewBag.idUsuario)">Visualizar</a> <font> | </font>
+                                @*<a onclick="excluirCliente('@Url.Action("Delete","Clientes")', @item.id, @ViewBag.idUsuario)" style="color:red">Excluir</a>*@
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h1 class="lead text-center mt-2" style="color:red">Nenhum cliente encontrado(0)</h1>
+}
+

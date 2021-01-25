@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header id="navbarPagina" >
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3" style="background-color:#1C1C1C; color:white;">
+        <div class="container">
+            <a style="font-weight: bold; text-decoration: none; color:white;" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" title="DuNadda" alt="Logo da DuNadda"><img src="~/imagens/img/logo-andrei-pequeno.png">uNadda Serviços</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse ml-lg-3">
+                <ul class="navbar-nav flex-grow-1 mr-auto" style="color:white">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                </ul>
+
+                <div class="my-0">
+                    <a class="btn btn-outline-success mr-2" asp-controller="UsuarioAcesso" asp-action="Logar">Entrar</a>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<footer class="border-top footer text-muted" id="footerPagina">
+    <div class="container">
+        &copy; 2021 - ProjetoAdvenTec - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>

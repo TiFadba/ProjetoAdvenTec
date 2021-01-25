@@ -1,0 +1,65 @@
+﻿@model ProjetoAdvenTec.Models.Cliente
+
+@{
+    ViewData["Title"] = "Detalhes do Cliente";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3"><i class="fas fa-user-tie mr-1"></i>Detalhes do Cliente </h1>
+
+<h4 class="lead mt-3 text-center">Dados Atuais do cliente </h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.nomeCliente)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.nomeCliente)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.nomeResponsavel)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.nomeResponsavel)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.cnpj)
+        </dt>
+        <dd class="col-sm-5">
+
+            @if (!String.IsNullOrEmpty(Model.cnpj))
+            {
+                @Html.DisplayFor(modelItem => Model.cnpj)
+            }
+            else
+            {
+                <b>Não Informado</b>
+            }
+
+            @Html.DisplayFor(model => model.cnpj)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.categoria)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.categoria)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a onclick="voltarPaginaInicialCliente('@Url.Action("RetornarPaginaPrincipal", "Clientes")', @ViewBag.idUsuario)">Voltar para a busca</a> |
+    <a onclick="editarCliente('@Url.Action("Edit","Clientes")', @Model.id, @ViewBag.idUsuario)"><b>Editar</b></a>
+</div>
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

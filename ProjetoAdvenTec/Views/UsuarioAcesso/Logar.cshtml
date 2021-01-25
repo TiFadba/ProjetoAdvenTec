@@ -1,0 +1,60 @@
+﻿@model ProjetoAdvenTec.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+
+    #telaLogin {
+        background-color: #1C1C1C;
+        padding: 10px;
+        border-radius: 10px ;
+    }
+
+    #telaLoginContainer {
+        margin-top: 100px;
+    }
+
+    input[type = text], input[type=password]{
+        font-size:large;
+        color:black;
+        font-weight:bolder;
+    }
+
+</style>
+
+<div class="row justify-content-center" id="telaLoginContainer" >
+    <div class="col-sm-6 col-md-6 col-lg-4 text-center" id="telaLogin" >
+
+        <div class="mb-4">
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/HqRcvkr/logo-andrei-pequeno.png" alt="logo-andrei-pequeno" border="0"></a>
+        </div>
+
+        <form asp-action="Logar">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="loginUsuario" class="control-label">Login<font style="color:red"> *</font></label>
+                <input asp-for="loginUsuario" class="form-control text-center" maxlength="30" />
+                <span asp-validation-for="loginUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="senha" class="control-label">Senha<font style="color:red"> *</font></label>
+                <input type="password" asp-for="senha" class="form-control text-center" maxlength="30" />
+                <span asp-validation-for="senha" class="text-danger"></span>
+                @if (ViewBag.resultadoBusca != null)
+                {
+                    if (!ViewBag.resultadoBusca)
+                    {
+                        <p style="color:red">Usuário não encontrado, verifique seu login/senha.</p>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                @*<a class="mr-1 float-left page-link" style="color: blue">Esquecei minha senha</a>*@
+                <input type="submit" value="Entrar" class="btn btn-outline-success float-right" />
+            </div>
+        </form>
+    </div>
+</div>
+

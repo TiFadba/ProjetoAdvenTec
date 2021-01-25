@@ -1,0 +1,68 @@
+﻿@model ProjetoAdvenTec.Models.Modelos_de_Validacao.LoginMudarSenha
+
+@{
+    ViewData["Title"] = "Mudar Senha";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+
+    #telaLogin {
+        background-color: #1C1C1C;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    #telaLoginContainer {
+        margin-top: 100px;
+    }
+
+    input[type = text], input[type=password] {
+        font-size: large;
+        color: black;
+        font-weight: bolder;
+    }
+
+</style>
+
+<div class="row justify-content-center" id="telaLoginContainer">
+    <div class="col-sm-6 col-md-6 col-lg-4 text-center" id="telaLogin">
+
+        <div class="mb-4">
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/HqRcvkr/logo-andrei-pequeno.png" alt="logo-andrei-pequeno" border="0"></a>
+        </div>
+
+        <form asp-action="AlterarSenha">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="idUsuario" class="form-control" />
+                <span asp-validation-for="idUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="senha" class="control-label">Nova Senha<font style="color:red"> *</font></label>
+                <input type="password" asp-for="senha" class="form-control text-center" maxlength="30" />
+                <span asp-validation-for="senha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="confirmarSenha" class="control-label">Confirmar Senha<font style="color:red"> *</font></label>
+                <input type="password" asp-for="confirmarSenha" class="form-control text-center" maxlength="30" />
+                <span asp-validation-for="confirmarSenha" class="text-danger"></span>
+                @if (ViewBag.senhasConferem != null)
+                {
+                    if (!ViewBag.senhasConferem)
+                    {
+                        <p style="color:red">Senhas não conferem!</p>
+                    }
+                }
+
+
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Entrar" class="btn btn-outline-success float-right" />
+            </div>
+        </form>
+    </div>
+</div>

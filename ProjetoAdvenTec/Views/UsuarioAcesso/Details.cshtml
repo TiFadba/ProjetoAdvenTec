@@ -1,0 +1,104 @@
+﻿@model ProjetoAdvenTec.Models.Usuario
+
+@{
+    ViewData["Title"] = "Detalhes Usuário ";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3"><i class="fas fa-user mr-1"></i>Detalhes do Usuário </h1>
+
+<h4 class="lead mt-3 ">Dados Atuais do Usuário </h4>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.nomeLogin)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.nomeLogin)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.senha)
+        </dt>*@
+        @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.senha)
+        </dd>*@
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.primeiroAcesso)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.primeiroAcesso)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.administrador)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.administrador)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adicionarUsuario)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adicionarUsuario)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adminUsuarios)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adminUsuarios)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adicionarCliente)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adicionarCliente)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adminClientes)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adminClientes)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adicionarAvaliacao)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adicionarAvaliacao)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adminAvaliacoes)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adminAvaliacoes)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.concederPermissoes)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.concederPermissoes)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a onclick="editarUsuario('@Url.Action("Edit","UsuarioAcesso")', @Model.id, @ViewBag.idUsuario)">Editar</a> |
+    <a onclick="voltarPaginaInicialUsuario('@Url.Action("RetornarPaginaPrincipal", "UsuarioAcesso")', @ViewBag.idUsuario)">Voltar</a>
+</div>
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

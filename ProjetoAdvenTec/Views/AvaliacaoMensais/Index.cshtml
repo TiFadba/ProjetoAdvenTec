@@ -1,0 +1,141 @@
+﻿@model IEnumerable<ProjetoAdvenTec.Models.AvaliacaoMensal>
+
+@{
+    ViewData["Title"] = "Página de Avaliações";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center lead"><i class="fas fa-paste mr-1"></i><b>Página Administrativa das Avaliações</b> </h1>
+<hr />
+
+<div>
+    @if (ViewBag.infoUsuario.administrador)
+    {
+        <p class="text-center">
+            <a class="btn btn-success" onclick="adicionarNovaAvaliacao('@Url.Action("Create","AvaliacaoMensais")', @ViewBag.idUsuario)">Adicionar Nova Avaliação</a>
+        </p>
+    }
+    else
+    {
+        if (ViewBag.infoUsuario.adminAvaliacoes || ViewBag.infoUsuario.adicionarAvaliacao)
+        {
+            <p class="text-center">
+                <a class="btn btn-success" onclick="adicionarNovaAvaliacao('@Url.Action("Create","AvaliacaoMensais")', @ViewBag.idUsuario)">Adicionar Nova Avaiação</a>
+            </p>
+        }
+    }
+</div>
+
+<table class="table text-center" style="color:white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.dataReferencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dataInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nps)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.encerrado)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.dataReferencia.ToString("MM/yyyy")
+                </td>
+                <td>
+                    @item.dataInicio.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+
+                    @if (item.nps >= 80)
+                    {
+                        <font style="color: green">@item.nps%</font>
+                    }
+                    else if (item.nps >= 60 && item.nps < 80)
+                    {
+                        <font style="color:yellow">@item.nps%</font>
+                    }
+                    else
+                    {
+                        <font style="color:red">@item.nps%</font>
+                    }
+
+                </td>
+                <td>
+                    @if (item.encerrado)
+                    {
+                        <font class="lead" style="color:red"><b>Encerrada</b></font>
+                    }
+                    else
+                    {
+                        DateTime agora = DateTime.Now.Date;
+
+                        if (agora.Date.CompareTo(item.dataInicio.Date) == 0)
+                        {
+                            <font style="color:green"><b>Em avaliação</b></font>
+                        }
+                        else
+                        {
+                            <font style="color:goldenrod"><b>Agendada</b></font>
+                        }
+
+                        //if (agora.Date.AddDays(item.diasExpirar).Date.Equals(agora.Date))
+                        //{
+
+                        //}
+                    }
+
+                </td>
+                <td>
+
+                    @if (ViewBag.infoUsuario.administrador)
+                    {
+                        <a onclick="visualizarAvaliacao('@Url.Action("Details","AvaliacaoMensais")', @item.id, @ViewBag.idUsuario)">Detalhes</a>
+
+                        if (!item.encerrado)
+                        {
+                            <font>|</font>
+                            <a onclick="excluirAvaliacao('@Url.Action("Delete","AvaliacaoMensais")', @item.id, @ViewBag.idUsuario)" style="color:red">Excluir</a>
+                        }
+                    }
+                    else
+                    {
+                        if (ViewBag.infoUsuario.adminAvaliacoes)
+                        {
+                            <a onclick="visualizarAvaliacao('@Url.Action("Details","AvaliacaoMensais")', @item.id, @ViewBag.idUsuario)">Detalhes</a>
+
+                            if (!item.encerrado)
+                            {
+                                <font>|</font>
+                                <a onclick="excluirAvaliacao('@Url.Action("Delete","AvaliacaoMensais")', @item.id, @ViewBag.idUsuario)" style="color:red">Excluir</a>
+                            }
+
+                        }
+                    }
+
+                    @*<a onclick="editarUsuario('@Url.Action("Edit","UsuarioAcesso")', @item.id, @ViewBag.idUsuario)">Editar</a> |*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

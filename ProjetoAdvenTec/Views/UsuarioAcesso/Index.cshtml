@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ProjetoAdvenTec.Models.Usuario>
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Página Usuário";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center lead"><i class="fas fa-user mr-1"></i><b>Página Administrativa dos Usuários</b></h1>
+<hr />
+
+
+<div>
+    @if (ViewBag.infoUsuario.administrador || ViewBag.infoUsuario.adminUsuarios || ViewBag.infoUsuario.adicionarUsuario)
+    {
+        <p class="text-center">
+            <a class="btn btn-success" onclick="adicionarNovoUsuario('@Url.Action("Create","UsuarioAcesso")', @ViewBag.idUsuario)">Adicionar Novo Usuário</a>
+        </p>
+    }
+
+</div>
+
+
+<table class="table text-center" style="color:white">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nomeLogin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.primeiroAcesso)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nomeLogin)
+                </td>
+                <td>
+                    @if (item.primeiroAcesso)
+                    {
+                        <font style="color:red"><b>Não</b></font>
+                    }
+                    else
+                    {
+                        <font style="color:green"><b>Sim</b></font>
+                    }
+                   
+                </td>
+
+                <td>
+
+                    @if (ViewBag.infoUsuario.administrador || ViewBag.infoUsuario.adminUsuarios)
+                    {
+                        <a onclick="editarUsuario('@Url.Action("Edit","UsuarioAcesso")', @item.id, @ViewBag.idUsuario)">Editar</a> <font>|</font>
+                        <a onclick="visualizarUsuario('@Url.Action("Details","UsuarioAcesso")', @item.id, @ViewBag.idUsuario)">Visualizar</a> <font>|</font>
+                        <a onclick="excluirUsuario('@Url.Action("Delete","UsuarioAcesso")', @item.id, @ViewBag.idUsuario)" style="color:red">Excluir</a>
+
+                    }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ProjetoAdvenTec.Models.Modelos_de_Validacao.ClienteAvaliacao>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<div class="row">
+
+    <div class="col-12">
+        <h1 class="lead"></h1>
+    </div>
+
+</div>
+
+@if (Model.Count() > 0)
+{
+    <ul class="list-group">
+
+
+
+        @foreach (var avaliacao in Model)
+        {
+        <li class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <b>@avaliacao.nomeCliente</b>
+
+            @if (avaliacao.nota == 0)
+            {
+                <span class="text-center text-wrap">@avaliacao.razaoNota</span>
+                <span class="badge bg-dark rounded-pill" style="color:white"><b>@avaliacao.nota</b></span>
+            }
+            else if (avaliacao.nota <= 4)
+            {
+                <span class="text-center flex-wrap">@avaliacao.razaoNota</span>
+                <span class="badge bg-danger rounded-pill" style="color:black"><b>@avaliacao.nota</b></span>
+
+            }
+            else if (avaliacao.nota == 5)
+            {
+                <span class="text-center flex-wrap">@avaliacao.razaoNota</span>
+                <span class="badge bg-warning rounded-pill" style="color:black"><b>@avaliacao.nota</b></span>
+
+            }
+            else
+            {
+                <span class="text-center flex-wrap">@avaliacao.razaoNota</span>
+                <span class="badge bg-success rounded-pill" style="color:black"><b>@avaliacao.nota</b></span>
+
+            }
+
+
+        </li>
+        }
+
+    </ul>
+}
+else
+{
+    <span class="text-center lead"> Nenhuma avaliação encontrada(0). </span>
+}
+
+
+
+

@@ -1,0 +1,106 @@
+﻿@model ProjetoAdvenTec.Models.Usuario
+
+@{
+    ViewData["Title"] = "Excluír Usuário";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3"><i class="fas fa-user mr-1"></i>Excluír Usuário </h1>
+
+<h4 class="lead mt-3">Tem certeza que deseja fazer isso?</h4>
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.nomeLogin)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.nomeLogin)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.senha)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.senha)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.primeiroAcesso)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.primeiroAcesso)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.administrador)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.administrador)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adicionarUsuario)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adicionarUsuario)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adminUsuarios)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adminUsuarios)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adicionarCliente)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adicionarCliente)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adminClientes)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adminClientes)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adicionarAvaliacao)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adicionarAvaliacao)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.adminAvaliacoes)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.adminAvaliacoes)
+        </dd>
+        <dt class="col-sm-5">
+            @Html.DisplayNameFor(model => model.concederPermissoes)
+        </dt>
+        <dd class="col-sm-5">
+            @Html.DisplayFor(model => model.concederPermissoes)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="id" />
+        <input type="hidden" id="idUsuarioAcesso" name="idUsuarioAcesso" value="@ViewBag.idUsuario" />
+        <input type="submit" value="Exluir" class="btn btn-danger" /> |
+        <a onclick="voltarPaginaInicialUsuario('@Url.Action("RetornarPaginaPrincipal", "UsuarioAcesso")', @ViewBag.idUsuario)">Voltar</a>
+    </form>
+</div>
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

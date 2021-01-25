@@ -1,0 +1,58 @@
+﻿@model ProjetoAdvenTec.Models.AvaliacaoMensal
+
+@{
+    ViewData["Title"] = "Adicionar Avaliação";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3"><i class="fas fa-paste mr-1"></i>Cadastrar Avaliação Mensal </h1>
+
+<h4 class="lead mt-3">Preencha os campos abaixo: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" id="idUsuarioAcesso" name="idUsuarioAcesso" value="@ViewBag.idUsuario" />
+
+            <div class="form-group">
+                <label asp-for="dataReferencia" class="control-label">Mês a ser avaliado<font style="color:red"> * </font></label>
+                <input asp-for="dataReferencia" class="form-control" />
+                <span asp-validation-for="dataReferencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="dataInicio" class="control-label">Data de inicio da avaliação<font style="color:red"> * </font></label>
+                <input asp-for="dataInicio" class="form-control" />
+                <span asp-validation-for="dataInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="diasExpirar" class="control-label"></label>
+                <input asp-for="diasExpirar" class="form-control" maxlength="1" min="1" max="3" onkeypress="return verificarSeNumeros(event)" />
+                <span asp-validation-for="diasExpirar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Adicionar Avaliação" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a onclick="voltarPaginaInicialAvaliacao('@Url.Action("RetornarPaginaPrincipal","AvaliacaoMensais")', @ViewBag.idUsuario)">Voltar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    $("#navbarPagina").hide()
+    $("#footerPagina").hide()
+</script>

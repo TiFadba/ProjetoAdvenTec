@@ -1,0 +1,60 @@
+﻿@model ProjetoAdvenTec.Models.AvaliacaoMensal
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center display-3"><i class="fas fa-paste mr-1"></i>Detalhes da Avaliação </h1>
+
+<h4 class="lead mt-3 text-center ">Dados Atuais da Avaliação </h4>
+
+<div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-sm-12 col-lg-12">
+            <ul class="nav nav-pills justify-content-center mb-4" id="nav-pills" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" onclick="mostrarTelaDetalhesGerais('@Url.Action("DetalhesGerais","AvaliacaoMensais")', @ViewBag.idAvaliacao, @ViewBag.idUsuario)" href="#nav-item-01" id="btnTelaDetalhesGerais" data-toggle="pill">Detalhes Gerais</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="mostrarTelaListaAvaliacoes('@Url.Action("ListaAvaliacoesClientes","AvaliacaoMensais")', @ViewBag.idAvaliacao, @ViewBag.idUsuario)" href="#nav-item-02" id="btnTelaListaAvaliacoes" data-toggle="pill">Avaliações Clientes</a>
+                </li>
+                @*<li class="nav-item">
+                    <a class="nav-link" onclick="mostrarTelaNoticias('@Url.Action("Noticias","Usuario", Model)')" href="#nav-item-03" id="btnTelaNoticias" data-toggle="pill">Convidar</a>
+                </li>*@
+            </ul>
+        </div>
+    </div>
+
+    <div class="tab-content col-sm-12 col-lg-12" id="nav-pills-content">
+        <div class="tab-pane fade show active" id="nav-item-01">
+
+        </div>
+        <div class="tab-pane fade" id="nav-item-02">
+
+        </div>
+        @*<div class="tab-pane fade" id="nav-item-03">
+
+        </div>*@
+    </div>
+
+
+    
+</div>
+
+<div>
+    <a onclick="voltarPaginaInicialAvaliacao('@Url.Action("RetornarPaginaPrincipal","AvaliacaoMensais")', @ViewBag.idUsuario)">Voltar</a>
+</div>
+
+<script>
+    $("#btnTelaDetalhesGerais").click()
+</script>

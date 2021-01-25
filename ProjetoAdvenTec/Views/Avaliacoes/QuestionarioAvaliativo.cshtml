@@ -1,0 +1,52 @@
+﻿@{
+
+    ViewData["Title"] = "Questionário Avaliativo";
+    Layout = null;
+    var idCliente = ViewBag.idCliente;
+    var idAvaliacao = ViewBag.idAvaliacao;
+}
+
+<style>
+    #areaAvaliacao {
+        background-color: white;
+        color: black;
+    }
+</style>
+
+<div id="areaAvaliacao">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 my-lg-5 mb-4">
+            <div id="tabelaVagas" class="text-center">
+
+                <h1>Avalie nosso serviço selecionando uma das notas abaixo:</h1>
+
+                @for (int i = 0; i <= 10; i++)
+                {
+                    if (i == 0)
+                    {
+                        <a class="btn btn-dark mb-2" onclick="avaliar('@Url.Action("Create","Avaliacoes")',@idCliente,@idAvaliacao,'@i')" style="color: white"> <b>@i</b></a>
+                    }
+                    else if (i <= 4)
+                    {
+                        <a class="btn btn-danger mb-2" onclick="avaliar('@Url.Action("Create","Avaliacoes")',@idCliente,@idAvaliacao,'@i')" style="color: white"> <b>@i</b></a>
+                    }
+                    else if (i == 5)
+                    {
+                        <a class="btn btn-warning mb-2" onclick="avaliar('@Url.Action("Create","Avaliacoes")',@idCliente,@idAvaliacao,'@i')" style="color: white"> <b>@i</b></a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-success mb-2" onclick="avaliar('@Url.Action("Create","Avaliacoes")',@idCliente,@idAvaliacao,'@i')" style="color: white"> <b>@i</b></a>
+                    }
+                }
+
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+            <div id="infoParticipante">
+
+            </div>
+        </div>
+    </div>
+</div>
+

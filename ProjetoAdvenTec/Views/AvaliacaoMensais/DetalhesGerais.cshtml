@@ -1,0 +1,109 @@
+﻿@model ProjetoAdvenTec.Models.AvaliacaoMensal
+
+@{
+    ViewData["Title"] = "Detalhes Gerais";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<dl class="row">
+
+    <div class="col-sm-6 col-lg-6">
+        <dt>
+            @Html.DisplayNameFor(model => model.dataReferencia)
+        </dt>
+        <dd>
+            @Model.dataReferencia.ToString("MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dataInicio)
+        </dt>
+        <dd>
+            @Model.dataInicio.ToString("dd/MM/yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diasExpirar)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.diasExpirar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.encerrado)
+        </dt>
+        <dd>
+            @if (Model.encerrado)
+            {
+                <font class="lead" style="color:red"><b>Encerrada</b></font>
+            }
+            else
+            {
+                DateTime agora = DateTime.Now.Date;
+
+                if (agora.Date.CompareTo(Model.dataInicio.Date) == 0)
+                {
+                    <font style="color:green"><b>Em avaliação</b></font>
+                }
+                else
+                {
+                    <font style="color:goldenrod"><b>Agendada</b></font>
+                }
+            }
+        </dd>
+    </div>
+
+
+    <div class="col-sm-6 col-lg-6">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nps)
+        </dt>
+        <dd>
+
+            @if (Model.nps >= 80)
+            {
+                <font class="lead" style="color: green">@Model.nps%</font>
+            }
+            else if (Model.nps >= 60 && Model.nps < 80)
+            {
+                <font class="lead" style="color:yellow">@Model.nps%</font>
+            }
+            else
+            {
+                <font class="lead" style="color:red">@Model.nps%</font>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.promotores)
+        </dt>
+        <dd>
+            @Model.promotores
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.neutros)
+        </dt>
+        <dd>
+            @Model.neutros
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detratores)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detratores)
+        </dd>
+
+
+    </div>
+
+
+</dl>

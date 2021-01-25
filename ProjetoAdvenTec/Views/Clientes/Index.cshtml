@@ -1,0 +1,45 @@
+﻿@model ProjetoAdvenTec.Models.Modelos_de_Validacao.IdPass
+
+@{
+
+    Layout = null;
+    ViewData["Title"] = "Página Cliente";
+}
+
+<style>
+    body {
+        color: white;
+        background-color: #4F4F4F;
+    }
+</style>
+
+<h1 class="text-center lead"><i class="fas fa-user-tie mr-1"></i><b>Página Administrativa dos Clientes</b></h1>
+<hr />
+
+<div class="row my-3 justify-content-center">
+    <div class="col-sm-12 col-md-12 col-lg-4 text-center mb-2">
+
+        @if (ViewBag.infoUsuario.administrador || ViewBag.infoUsuario.adminClientes)
+        {
+            <a class="btn btn-success" onclick="adicionarNovoCliente('@Url.Action("Create","Clientes", Model)')">Adicionar Novo Cliente</a>
+        }
+        else if (ViewBag.infoUsuario.adicionarCliente)
+        {
+            <a class="btn btn-success" onclick="adicionarNovoCliente('@Url.Action("Create","Clientes", Model)')">Adicionar Novo Cliente</a>
+        }
+
+    </div>
+    <div class="col-sm-9 col-md-9 col-lg-5 mr-1 pr-0">
+        <input class="form-control" type="text" id="pesquisaCliente" placeholder="Digite o nome da empresa" />
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2 ml-0 pl-0">
+        <a class="btn btn-outline-info text-center" onclick="pesquisaCampoNomeCliente('@Url.Action("ListarClientes","Clientes")', @Model.id)">Procurar</a>
+    </div>
+
+
+
+</div>
+
+<hr />
+
+<div id="listaPesquisaCliente"></div>
